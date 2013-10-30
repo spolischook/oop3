@@ -1,0 +1,24 @@
+{
+    "name": "spolischook/oop-3",
+    "description": "This is the homework of GeekHub AdvancedPHP",
+    "homepage": "http://geekhub.ck.ua",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Polischook",
+            "homepage": "http://kotoblog.pp.ua"
+        },
+        {
+            "name": "GeekHub Community",
+            "homepage": "http://geekhub.ck.ua"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "2.2.*@dev",
+        "twig/twig": "1.14.*@dev",
+        "symfony/routing": "2.4.*@dev"
+    },
+    "autoload": {
+        "psr-0": { "Spolischook\\": "src/" }
+    }
+}
