@@ -2,24 +2,22 @@
 
 namespace Spolischook\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController
 {
     public function indexAction()
     {
-        return 'Hello world!!!';
+        return new Response('Hello world!!!');
     }
 
     public function fooAction()
     {
-        return 'Foo Action!';
+        return new Response('Foo Action!');
     }
 
-    public function helloAction(Request $request)
+    public function helloAction($name)
     {
-        $name = $request->get('name') ?: 'Anonymous';
-
-        return "Hello " . $name;
+        return new Response("Hello " . $name);
     }
 }
