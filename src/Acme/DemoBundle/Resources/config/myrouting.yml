@@ -1,0 +1,11 @@
+_first:
+    path:  /first
+    defaults: { _controller: AcmeDemoBundle:MyTest:first }
+
+_second:
+    path:  /second
+    defaults: { _controller: AcmeDemoBundle:MyTest:second }
+
+_third:
+    path:  /third
+    defaults: { _controller: AcmeDemoBundle:MyTest:third }
