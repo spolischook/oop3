@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Second!{% endblock %}</title>
+    </head>
+    <body>
+        {% block body %}<h1>Second</h1>{% endblock %}
+        {% block url %}<a href='{{ url }}'>Third</a>{% endblock %}
+    </body>
+</html>
