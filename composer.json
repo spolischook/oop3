@@ -21,7 +21,8 @@
         "symfony/http-kernel": "2.3.*@dev",
         "twbs/bootstrap": "dev-add-release-checklist",
         "leafo/lessphp": "dev-master#85bd4557920d5f4fcbf41beb621e91b842e3621b",
-        "kriswallsmith/assetic": "1.2.*@dev"
+        "kriswallsmith/assetic": "1.2.*@dev",
+        "components/jquery": "1.10.*@dev"
     },
     "autoload": {
         "psr-0": { "Spolischook\\": "src/" }

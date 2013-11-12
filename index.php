@@ -48,16 +48,17 @@ $style = new AssetCollection(array(
 ));
 $style->setTargetPath('style.css');
 
-$bootstrapJs = new AssetCollection(array(
+$js = new AssetCollection(array(
+    new FileAsset(__DIR__ . '/vendor/components/jquery/jquery.js'),
     new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
     new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/docs-assets/js/holder.js'),
 ), array(
     new JsCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
 ));
-$bootstrapJs->setTargetPath('bootstrap.js');
+$js->setTargetPath('scripts.js');
 
 $assetManager->set('main_css', $style);
-$assetManager->set('bootstrap_js', $bootstrapJs);
+$assetManager->set('bootstrap_js', $js);
 
 
 $assetWriter = new AssetWriter(__DIR__ . '/public');

@@ -1,4 +1,5 @@
 vendor/
 public/style.css
-public/bootstrap.js
+public/scripts.js
 view/cache/*
+components/*
