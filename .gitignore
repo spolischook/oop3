@@ -1,1 +1,5 @@
 vendor/
+public/style.css
+public/scripts.js
+view/cache/*
+components/*
