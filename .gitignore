@@ -1,1 +1,4 @@
 vendor/
+public/style.css
+public/bootstrap.js
+view/cache/*
