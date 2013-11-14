@@ -4,6 +4,7 @@ namespace Spolischook\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Spolischook\Entity\Film;
+use Imagine\Imagick\Imagine;
 
 /**
  * @Entity @Table(name="image")
@@ -189,5 +190,22 @@ class Image
     public function getHeight()
     {
         return $this->height;
+    }
+
+    //ToDo: Use Twig extension instead
+    public function getThumbnail($width, $height)
+    {
+        $imagine = new \Imagine\Imagick\Imagine();
+        $size    = new \Imagine\Image\Box($width, $height);
+        $mode    = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+        $pathParts = pathinfo($this->src);
+        $newFileName =  $pathParts['filename'] . "_$width" . "_$height." . $pathParts['extension'];
+
+        $imagine->open($this->src)
+            ->thumbnail($size, $mode)
+            ->save($pathParts['dirname'] . '/' .$newFileName)
+        ;
+
+        return '/public/uploads/' . $newFileName;
     }
 }

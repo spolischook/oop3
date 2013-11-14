@@ -20,10 +20,20 @@ class MainController
 
     public function indexAction()
     {
-        $films = $this->em->getRepository('Film')->findBy(array(), null, 6);
+        $films = $this->em->getRepository('Spolischook\Entity\Film')->findBy(array(), null, 6);
         return new Response($this->twig->render('index.html.twig', array(
             'title' => 'Yet another video hosting',
             'films' => $films,
+        )));
+    }
+
+    public function getFilmAction($id)
+    {
+        $film = $this->em->getRepository('Spolischook\Entity\Film')->findOneById($id);
+
+        return new Response($this->twig->render('Film/show.html.twig', array(
+            'film' => $film,
+            'title' => $film->getTitle(),
         )));
     }
 

@@ -232,4 +232,23 @@ class Film
     {
         return $this->genres;
     }
+
+    //ToDo: Use Twig extension instead
+    public function getShortDescription($wordsNumber)
+    {
+        return substr($this->description, 0, $wordsNumber) . '...';
+    }
+
+    //ToDo: Use Twig extension instead
+    public function getEmbedVideo($width, $height)
+    {
+        preg_match(
+            '/[\\?\\&]v=([^\\?\\&]+)/',
+            $this->getVideoSrc(),
+            $matches
+        );
+        $id = $matches[1];
+
+        echo '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/' . $id . '&amp;hl=en_US&amp;fs=1?rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/' . $id . '&amp;hl=en_US&amp;fs=1?rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="' . $width . '" height="' . $height . '"></embed></object>';
+    }
 }
