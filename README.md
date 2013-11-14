@@ -7,3 +7,6 @@ Progress can be watched at separate branch:
 * step3 - add tests for model
 * step4 - add Routing component and simple Actions
 * step5 - add HttpKernel
+* step6 - add Twig and Assetic
+* step7 - add Doctrine ORM and Entities with relations
+* step8 - add Data Fixtures and view for Entities
