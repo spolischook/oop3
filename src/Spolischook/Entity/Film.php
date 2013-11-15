@@ -18,13 +18,13 @@ class Film
     /** @Column(type="text") **/
     protected $description;
 
-    /** @OneToMany(targetEntity="Image", mappedBy="film") */
+    /** @OneToMany(targetEntity="Image", mappedBy="film", cascade={"remove"}) */
     protected $images;
 
     /** @Column(type="string") **/
     protected $videoSrc;
 
-    /** @OneToOne(targetEntity="Image", mappedBy="film") */
+    /** @OneToOne(targetEntity="Image", mappedBy="film", cascade={"remove"}) */
     protected $poster;
 
     /** @Column(type="integer") **/
