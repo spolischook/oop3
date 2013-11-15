@@ -89,11 +89,12 @@ $twig->addExtension(new RoutingExtension($generator));
 $dispatcher = new EventDispatcher();
 $dispatcher->addSubscriber(new RouterListener($matcher));
 
-$dispatcher->addListener(KernelEvents::CONTROLLER, function (Event $event) use ($twig, $em) {
+$dispatcher->addListener(KernelEvents::CONTROLLER, function (Event $event) use ($twig, $em, $generator) {
     $controllerArray = $event->getController();
     $controller = $controllerArray[0];
     $controller->setTwig($twig);
     $controller->setEntityManager($em);
+    $controller->setRoutingGenerator($generator);
 });
 
 $resolver = new ControllerResolver();
