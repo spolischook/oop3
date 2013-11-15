@@ -37,6 +37,10 @@ class MainController
     {
         $film = $this->em->getRepository('Spolischook\Entity\Film')->findOneById($id);
 
+        if (!$film) {
+            throw new \Exception("Film with id $id not found!");
+        }
+
         return new Response($this->twig->render('Film/show.html.twig', array(
             'film' => $film,
             'title' => $film->getTitle(),
