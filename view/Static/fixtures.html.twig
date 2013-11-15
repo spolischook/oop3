@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Update Fixtures Loader <small>reload all base entities</small></h1>
+    </div>
+    <div class="alert alert-danger fade in">
+        <h4>Oh man! You have lost all your input data!</h4>
+        <p>You will lose all your data without the capability to recover. All historical data from the database will be replaced with demo data.</p>
+        <p>
+            <a href="{{ path('index') }}" class="btn btn-danger">Go away</a>
+            <button id="load-fixtures" type="button" class="btn btn-default">Update Fixtures</button>
+        </p>
+    </div>
+    <p></p>
+{% endblock content %}

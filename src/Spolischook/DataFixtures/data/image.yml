@@ -1,0 +1,19 @@
+images:
+    vinni-puh:
+        title: Винни Пух
+        src:  data/images/vinni-puh.jpg
+    ted-jons:
+        title: Тед Джонс
+        src: data/images/tad-jones.jpg
+    monstr-v-parije:
+        title: Монстр в Париже
+        src: data/images/monstr-v-parije.jpg
+    letuchij-korabl:
+        title: Летучий Корабль
+        src: data/images/letuchiy-korabl.jpg
+    samiy-malenkij-gnom:
+        title: Самый маленький гном
+        src: data/images/samiy-malenkiy-gnom.jpg
+    38-popugaev:
+        title: 38 попугаев
+        src: data/images/38-popugaev.jpg

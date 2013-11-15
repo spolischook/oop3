@@ -37,7 +37,9 @@ $routes = new RouteCollection();
 $routes->add('index', new Route('/', array('_controller' => 'Spolischook\Controller\MainController::indexAction')));
 $routes->add('foo', new Route('/foo', array('_controller' => 'Spolischook\Controller\MainController::fooAction')));
 $routes->add('greeting', new Route('/hello/{name}', array('_controller' => 'Spolischook\Controller\MainController::helloAction')));
-$routes->add('load_fixtures', new Route('/load-fixtures', array('_controller' => 'Spolischook\Controller\MainController::loadFixturesAction')));
+$routes->add('load_fixtures', new Route('/load-fixtures ', array('_controller' => 'Spolischook\Controller\MainController::loadFixturesAction')));
+$routes->add('film_show', new Route('/film/{id}', array('_controller' => 'Spolischook\Controller\MainController::getFilmAction')));
+$routes->add('film_delete', new Route('/film/delete/{id}', array('_controller' => 'Spolischook\Controller\MainController::deleteFilmAction')));
 
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/view');
 $twig = new Twig_Environment($loader, array(
@@ -47,32 +49,32 @@ $twig = new Twig_Environment($loader, array(
 
 $twig->addExtension(new AsseticExtension(new AssetFactory(__DIR__ . '/public')));
 
-$assetManager = new AssetManager();
-$style = new AssetCollection(array(
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/css/bootstrap.css'),
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/examples/carousel/carousel.css'),
-), array(
-    new CssCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
-    new CssRewriteFilter(),
-));
-$style->setTargetPath('style.css');
-
-$js = new AssetCollection(array(
-    new FileAsset(__DIR__ . '/vendor/components/jquery/jquery.js'),
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/docs-assets/js/holder.js'),
-    new FileAsset(__DIR__ . '/public/load-fixtures.js'),
-), array(
-    new JsCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
-));
-$js->setTargetPath('scripts.js');
-
-$assetManager->set('main_css', $style);
-$assetManager->set('bootstrap_js', $js);
-
-
-$assetWriter = new AssetWriter(__DIR__ . '/public');
-$assetWriter->writeManagerAssets($assetManager);
+//$assetManager = new AssetManager();
+//$style = new AssetCollection(array(
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/css/bootstrap.css'),
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/examples/carousel/carousel.css'),
+//), array(
+//    new CssCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
+//    new CssRewriteFilter(),
+//));
+//$style->setTargetPath('style.css');
+//
+//$js = new AssetCollection(array(
+//    new FileAsset(__DIR__ . '/vendor/components/jquery/jquery.js'),
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/docs-assets/js/holder.js'),
+//    new FileAsset(__DIR__ . '/public/load-fixtures.js'),
+//), array(
+//    new JsCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
+//));
+//$js->setTargetPath('scripts.js');
+//
+//$assetManager->set('main_css', $style);
+//$assetManager->set('bootstrap_js', $js);
+//
+//
+//$assetWriter = new AssetWriter(__DIR__ . '/public');
+//$assetWriter->writeManagerAssets($assetManager);
 //exit;
 
 $request = Request::createFromGlobals();
@@ -88,11 +90,12 @@ $twig->addExtension(new RoutingExtension($generator));
 $dispatcher = new EventDispatcher();
 $dispatcher->addSubscriber(new RouterListener($matcher));
 
-$dispatcher->addListener(KernelEvents::CONTROLLER, function (Event $event) use ($twig, $em) {
+$dispatcher->addListener(KernelEvents::CONTROLLER, function (Event $event) use ($twig, $em, $generator) {
     $controllerArray = $event->getController();
     $controller = $controllerArray[0];
     $controller->setTwig($twig);
     $controller->setEntityManager($em);
+    $controller->setRoutingGenerator($generator);
 });
 
 $resolver = new ControllerResolver();

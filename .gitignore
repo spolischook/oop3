@@ -3,3 +3,4 @@ public/style.css
 public/scripts.js
 view/cache/*
 components/*
+public/uploads/*

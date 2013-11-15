@@ -18,13 +18,13 @@ class Film
     /** @Column(type="text") **/
     protected $description;
 
-    /** @OneToMany(targetEntity="Image", mappedBy="film") */
+    /** @OneToMany(targetEntity="Image", mappedBy="film", cascade={"remove"}) */
     protected $images;
 
     /** @Column(type="string") **/
     protected $videoSrc;
 
-    /** @OneToOne(targetEntity="Image", mappedBy="film") */
+    /** @OneToOne(targetEntity="Image", mappedBy="film", cascade={"remove"}) */
     protected $poster;
 
     /** @Column(type="integer") **/
@@ -231,5 +231,24 @@ class Film
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    //ToDo: Use Twig extension instead
+    public function getShortDescription($wordsNumber)
+    {
+        return substr($this->description, 0, $wordsNumber) . '...';
+    }
+
+    //ToDo: Use Twig extension instead
+    public function getEmbedVideo($width, $height)
+    {
+        preg_match(
+            '/[\\?\\&]v=([^\\?\\&]+)/',
+            $this->getVideoSrc(),
+            $matches
+        );
+        $id = $matches[1];
+
+        echo '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/' . $id . '&amp;hl=en_US&amp;fs=1?rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/' . $id . '&amp;hl=en_US&amp;fs=1?rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="' . $width . '" height="' . $height . '"></embed></object>';
     }
 }
