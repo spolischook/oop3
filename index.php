@@ -37,8 +37,9 @@ $routes = new RouteCollection();
 $routes->add('index', new Route('/', array('_controller' => 'Spolischook\Controller\MainController::indexAction')));
 $routes->add('foo', new Route('/foo', array('_controller' => 'Spolischook\Controller\MainController::fooAction')));
 $routes->add('greeting', new Route('/hello/{name}', array('_controller' => 'Spolischook\Controller\MainController::helloAction')));
-$routes->add('load_fixtures', new Route('/load-fixtures', array('_controller' => 'Spolischook\Controller\MainController::loadFixturesAction')));
+$routes->add('load_fixtures', new Route('/load-fixtures ', array('_controller' => 'Spolischook\Controller\MainController::loadFixturesAction')));
 $routes->add('film_show', new Route('/film/{id}', array('_controller' => 'Spolischook\Controller\MainController::getFilmAction')));
+$routes->add('film_delete', new Route('/film/delete/{id}', array('_controller' => 'Spolischook\Controller\MainController::deleteFilmAction')));
 
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/view');
 $twig = new Twig_Environment($loader, array(

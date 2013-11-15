@@ -57,7 +57,11 @@
                 <img class="img-thumbnail" src="{{ film.poster.getThumbnail(140, 140) }}" alt="Generic placeholder image">
                 <h2>{{ film.title }}</h2>
                 <p>{{ film.shortDescription(350) }}</p>
-                <p><a class="btn btn-default" href="{{ path('film_show', {'id': film.id}) }}" role="button">View details &raquo;</a></p>
+                <p><a class="btn btn-default" href="{{ path('film_show', {'id': film.id}) }}" role="button">View details &raquo;</a>
+                    <form method="POST" action="{{ path('film_delete', {'id': film.id}) }}">
+                        <button type="submit" class="btn btn-danger" href="#" role="button">Delete film &raquo;</button>
+                    </form>
+                </p>
             </div><!-- /.col-lg-4 -->
         {% if (loop.index in [3, 6, 9, 12, 15]) %}
             </div><!-- /.row -->
