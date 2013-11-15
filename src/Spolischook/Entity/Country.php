@@ -17,7 +17,7 @@ class Country
     /** @Column(type="string") **/
     protected $code;
 
-    /** @OneToMany(targetEntity="Film", mappedBy="film") */
+    /** @OneToMany(targetEntity="Film", mappedBy="country") */
     protected $films;
 
     public function __construct()
