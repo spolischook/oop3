@@ -48,32 +48,32 @@ $twig = new Twig_Environment($loader, array(
 
 $twig->addExtension(new AsseticExtension(new AssetFactory(__DIR__ . '/public')));
 
-$assetManager = new AssetManager();
-$style = new AssetCollection(array(
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/css/bootstrap.css'),
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/examples/carousel/carousel.css'),
-), array(
-    new CssCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
-    new CssRewriteFilter(),
-));
-$style->setTargetPath('style.css');
-
-$js = new AssetCollection(array(
-    new FileAsset(__DIR__ . '/vendor/components/jquery/jquery.js'),
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
-    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/docs-assets/js/holder.js'),
-    new FileAsset(__DIR__ . '/public/load-fixtures.js'),
-), array(
-    new JsCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
-));
-$js->setTargetPath('scripts.js');
-
-$assetManager->set('main_css', $style);
-$assetManager->set('bootstrap_js', $js);
-
-
-$assetWriter = new AssetWriter(__DIR__ . '/public');
-$assetWriter->writeManagerAssets($assetManager);
+//$assetManager = new AssetManager();
+//$style = new AssetCollection(array(
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/css/bootstrap.css'),
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/examples/carousel/carousel.css'),
+//), array(
+//    new CssCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
+//    new CssRewriteFilter(),
+//));
+//$style->setTargetPath('style.css');
+//
+//$js = new AssetCollection(array(
+//    new FileAsset(__DIR__ . '/vendor/components/jquery/jquery.js'),
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
+//    new FileAsset(__DIR__ . '/vendor/twbs/bootstrap/docs-assets/js/holder.js'),
+//    new FileAsset(__DIR__ . '/public/load-fixtures.js'),
+//), array(
+//    new JsCompressorFilter(__DIR__ . '/public/yuicompressor-2.4.8.jar'),
+//));
+//$js->setTargetPath('scripts.js');
+//
+//$assetManager->set('main_css', $style);
+//$assetManager->set('bootstrap_js', $js);
+//
+//
+//$assetWriter = new AssetWriter(__DIR__ . '/public');
+//$assetWriter->writeManagerAssets($assetManager);
 //exit;
 
 $request = Request::createFromGlobals();
