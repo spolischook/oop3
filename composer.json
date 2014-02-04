@@ -16,7 +16,8 @@
     "require": {
         "symfony/http-foundation": "2.2.*@dev",
         "twig/twig": "1.14.*@dev",
-        "symfony/routing": "2.4.*@dev"
+        "symfony/routing": "2.4.*@dev",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-0": { "Spolischook\\": "src/" }
